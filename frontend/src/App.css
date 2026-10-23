@@ -1,0 +1,423 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* User Selection */
+
+.user-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  margin-bottom: 35px;
+  background: #171b2b;
+  border: 1px solid #292e42;
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+
+.user-selector label {
+  color: #c4b5fd;
+  font-weight: bold;
+}
+
+.user-selector select {
+  padding: 12px 18px;
+  background: #252a40;
+  border: 1px solid #49415e;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.user-selector select:focus {
+  outline: 2px solid #8b5cf6;
+}
+
+.user-selector span {
+  color: #a9afc0;
+  font-size: 14px;
+}
+
+@media (max-width: 650px) {
+  .user-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+/* Real Movie Posters */
+
+.movie-poster {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #312052, #161d35);
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-poster span {
+  font-size: 65px;
+}
+
+.movie-poster.poster-fallback::after {
+  content: "🎬";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 65px;
+}
+
+.poster-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top: 3px solid #a855f7;
+  border-radius: 50%;
+  animation: posterSpin 0.8s linear infinite;
+}
+
+@keyframes posterSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.movie-card {
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.movie-modal {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  width: min(750px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 18px;
+  background: #171725;
+  color: white;
+}
+
+.modal-poster {
+  width: 210px;
+  max-width: 40%;
+  height: fit-content;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.modal-content {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.6;
+}
+
+.modal-content h2 {
+  margin-bottom: 12px;
+}
+
+.modal-content h3 {
+  margin-top: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .movie-modal {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-poster {
+    max-width: 100%;
+    width: 160px;
+  }
+}
+
+.empty-watchlist {
+  text-align: center;
+  padding: 60px 20px;
+  margin: 40px auto;
+  max-width: 550px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.empty-watchlist h2 {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.empty-watchlist p {
+  color: #aaa;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.empty-watchlist button {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.empty-watchlist button:hover {
+  background: #b20710;
+}
+
+.toast-notification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 360px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: #242424;
+  color: white;
+  border: 1px solid #444;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.toast-notification button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.genre-filter {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #242424;
+  color: white;
+  border: 1px solid #444;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 160px;
+}
+
+.genre-filter:focus {
+  outline: none;
+  border-color: #e50914;
+}
